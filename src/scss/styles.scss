@@ -44,7 +44,7 @@ header {
 
 .main-block {
   margin: 0 10%;
-
+  min-height: 79vh;
 
   // Картинка-лого
   .logo {
@@ -111,29 +111,45 @@ header {
     padding-top: 40px;
     width: 100%;
 
-    .block-item {
+    a {
+      text-decoration: none;
+      color: #000;
       display: flex;
       flex-direction: column;
       width: 22%;
-      padding-bottom: 40px;
-      
-      &__image {
-        img {
-          max-width: 90%;
-          border-radius: 10px;
 
-          &:hover {
-            cursor: pointer;
+      .block-item {
+
+        padding-bottom: 40px;
+        
+        &__image {
+          img {
+            max-width: 90%;
+            border-radius: 10px;
+  
+            &:hover {
+              cursor: pointer;
+            }
           }
         }
+        &__header {
+          font-size: 16px;
+          font-weight: 600;
+          padding: 10px 0;
+        }
       }
-      &__header {
-        font-size: 16px;
-        font-weight: 600;
-        padding: 10px 0;
-      }
-    }
+    }  
   }
+
+  .characters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    width: 100%; 
+  }
+
 }
 
 

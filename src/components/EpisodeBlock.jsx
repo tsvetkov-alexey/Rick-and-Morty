@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 const EpisodeBlock = ({ id, name, air_date }) => {
@@ -14,18 +15,20 @@ const EpisodeBlock = ({ id, name, air_date }) => {
   };
 
   return (
-    <div className="block-item">
-      <div className="block-item__image">
-        <img src={seasonImages[currentSeasonFilter]} alt="preview" />
+    <Link to={`/${id}`}>
+      <div className="block-item">
+        <div className="block-item__image">
+          <img src={seasonImages[currentSeasonFilter]} alt="preview" />
+        </div>
+        <div className="block-item__header">
+          <span>{name}</span>
+        </div>
+        <div className="block-item__text">
+          <span>Episode №{id} </span><br />
+          <span>Release date: {air_date}</span>
+        </div>
       </div>
-      <div className="block-item__header">
-        <span>{name}</span>
-      </div>
-      <div className="block-item__text">
-        <span>Episode №{id} </span><br />
-        <span>Release date: {air_date}</span>
-      </div>
-    </div>
+    </Link>
   )
 }
 

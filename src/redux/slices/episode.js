@@ -2,8 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../axios";
 
 export const fetchEpisodes = createAsyncThunk('episodes/fetchEpisodes', async (params) => {
-  const { currentSeasonFilter } = params;
-  const { data } = await axios.get(`/episode?episode=${currentSeasonFilter}`);
+  const { currentSeasonFilter, search } = params;
+  const { data } = await axios.get(`/episode?episode=${currentSeasonFilter}&name=${search}`);
+  // console.log(data)
   return data;
 })
 
@@ -34,3 +35,5 @@ export const episode = createSlice({
 })
 
 export default episode.reducer;
+
+

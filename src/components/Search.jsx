@@ -1,9 +1,33 @@
-import React from 'react'
+import React, { useCallback, useRef, useState } from 'react'
+import { setSearch } from '../redux/slices/filter';
+import { useDispatch, useSelector } from 'react-redux';
+import debounce from 'lodash.debounce';
 
 const Search = () => {
+  const dispatch = useDispatch();
+  const inputRef = useRef(null);
+
+  const [value, setValue] = useState('');
+  const updateSearchValue = useCallback(
+    debounce((str) => {
+      dispatch(setSearch(str));
+    }, 250),
+    [],
+  );
+
+  const onChangeInput = (e) => {
+    setValue(e.target.value);
+    updateSearchValue(e.target.value);
+  }
+   
   return (
     <div className="seasons-block__search">
-      <input type="text" placeholder="Episode u're looking for..." />
+      <input 
+        type="text" 
+        placeholder="Episode u're looking for..." 
+        value={value}
+        onChange={onChangeInput}
+      />
       <svg
         width="20"
         height="20"
