@@ -1,12 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import Header from '../../components/Header';
-import Logo from '../../components/Logo';
-import Filter from '../../components/Filter';
-import Search from '../../components/Search';
-import EpisodeBlock from '../../components/EpisodeBlock';
-import Footer from '../../components/Footer';
-import Skeleton from '../../components/Skeleton';
-import axios from '../../axios';
+import React, { useEffect} from 'react'
+
+import {Logo, Filter, Search, EpisodeBlock, Skeleton} from '../../components';
 
 import st from './home.module.scss'
 
@@ -29,6 +23,8 @@ const Home = () => {
     }
   }, [currentSeasonFilter, search])
 
+
+
   const skeleton = [...new Array(12)].map((_, i) => <Skeleton key={i}/>)
 
   const totalEpisodes = episodes.results
@@ -43,7 +39,6 @@ const Home = () => {
   
   return (
     <>
-      <Header />
       <div className='main-block'>
         <Logo />
         <div className='nav-block'>
@@ -54,7 +49,6 @@ const Home = () => {
           {status === 'loading' ? skeleton : totalEpisodes } 
         </div>
       </div>
-      <Footer />
     </>
   )
 }

@@ -1,8 +1,8 @@
-import React, { useRef } from 'react'
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentOption } from '../redux/slices/filter';
 
-const Filter = () => {
+export const Filter = () => {
   const selectRef = useRef(null);
   const dispatch = useDispatch();
   
@@ -10,6 +10,11 @@ const Filter = () => {
     const currentValue = selectRef.current.value;
     dispatch(setCurrentOption(currentValue));
   }
+
+  const {current} = useSelector(state => state.filter.currentOption.name);
+
+  useEffect(() => {
+  }, [current])
 
   return (
     <select name="seasons" ref={selectRef} onChange={handleSelectChange}>
@@ -21,5 +26,3 @@ const Filter = () => {
     </select>
   )
 }
-
-export default Filter

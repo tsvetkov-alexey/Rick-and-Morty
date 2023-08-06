@@ -1,0 +1,30 @@
+.logo {
+  text-align: center;
+
+  img{
+    max-height: 70px;
+    padding-top: 25px;
+    padding-bottom: 35px;
+  }
+}
+
+.block {
+  display: flex;
+  margin: 0 auto;
+  width: 50%;
+  background: #1B774B;
+  border: 1px solid #66BB6A;
+  border-radius: 20px;
+  padding: 20px;
+  img {
+    width: 50%;
+    border-radius: 15px;
+  }
+  .info {
+    color: #fafafa;
+    padding-left: 30px;
+  }
+}
+
+
+

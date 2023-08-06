@@ -4,7 +4,8 @@ const initialState = {
   currentOption: {
     name: 'S01'
   },
-  search: ''
+  search: '',
+  page: 1
 }
 
 export const filter = createSlice({
@@ -16,10 +17,13 @@ export const filter = createSlice({
     },
     setSearch(state, action) {
       state.search = action.payload;
-    }
+    },
+    setPage(state, action) {
+      state.page = action.payload;
+  },
   }
 })
 
-export const {setCurrentOption, setSearch} = filter.actions;
+export const {setCurrentOption, setSearch, setPage} = filter.actions;
 
 export default filter.reducer;

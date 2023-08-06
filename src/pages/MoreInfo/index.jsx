@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import st from './moreInfo.module.scss';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import CharacterBlock from '../../components/CharacterBlock';
-import CharacterSkeleton from '../../components/CharacterSkeleton';
+
+import st from './moreInfo.module.scss';
+
+import {CharacterBlock, CharacterSkeleton, Loader} from '../../components';
 
 const MoreInfo = () => {
   const [char, setChar] = useState([]);
@@ -60,24 +59,17 @@ const MoreInfo = () => {
       : null;
 
   if (!char) {
-    return (
-      <div className={st.loaderContainer}>
-        <div className={st.loader}></div>
-        <h4 className={st.loaderHeader}>Идет загрузка, подождите...</h4>
-      </div>
-    );
+    return <Loader /> ;
   }
 
   const skeleton = [...new Array(8)].map((_, i) => <CharacterSkeleton key={i} />);
 
   return (
     <>
-      <Header />
       <div className="main-block">
         <h2 className={st.header}>Characters that appeared in episode #{id}</h2>
         <div className="characters">{isLoading ? skeleton : charsArr}</div>
       </div>
-      <Footer />
     </>
   );
 };

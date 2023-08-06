@@ -1,7 +1,7 @@
-import React from "react"
-import ContentLoader from "react-content-loader"
+import React from "react";
+import ContentLoader from "react-content-loader";
 
-const CharacterSkeleton = () => (
+export const CharacterSkeleton = () => (
 <ContentLoader 
     speed={2}
     width={230}
@@ -15,5 +15,3 @@ const CharacterSkeleton = () => (
     <rect x="2" y="235" rx="5" ry="5" width="228" height="20" />
   </ContentLoader>
 )
-
-export default CharacterSkeleton;

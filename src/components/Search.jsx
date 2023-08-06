@@ -1,11 +1,10 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { setSearch } from '../redux/slices/filter';
 import { useDispatch, useSelector } from 'react-redux';
 import debounce from 'lodash.debounce';
 
-const Search = () => {
+export const Search = () => {
   const dispatch = useDispatch();
-  const inputRef = useRef(null);
 
   const [value, setValue] = useState('');
   const updateSearchValue = useCallback(
@@ -42,5 +41,3 @@ const Search = () => {
     </div>
   )
 }
-
-export default Search;

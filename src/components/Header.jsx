@@ -1,21 +1,21 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Header = () => {
+export const Header = () => {
   return (
     <header>
       <div className="block">
-        <div className="block__logo">
-          <img src="./assets/episodes.png" alt="episodes" />
-        </div>
+        <Link to='/'>
+          <div className="block__logo">
+            <img src="./assets/episodes.png" alt="episodes" />
+          </div>
+        </Link>
+        <Link to='character'>
         <div className="block__logo">
           <img src="./assets/characters.png" alt="characters" className="block__logo_small" />
         </div>
-        <div className="block__logo">
-          <img src="./assets/location.png" alt="location" />
-        </div>
+        </Link>
       </div>
     </header>
   )
-}
-
-export default Header
+};

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
-const EpisodeBlock = ({ id, name, air_date }) => {
+export const EpisodeBlock = ({ id, name, air_date }) => {
   const currentSeasonFilter = useSelector((state) => state.filter.currentOption.name);
 
   const seasonImages = {
@@ -30,6 +30,4 @@ const EpisodeBlock = ({ id, name, air_date }) => {
       </div>
     </Link>
   )
-}
-
-export default EpisodeBlock
+};
