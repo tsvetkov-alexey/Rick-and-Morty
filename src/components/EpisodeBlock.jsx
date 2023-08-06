@@ -1,6 +1,8 @@
-import React from 'react'
+import axios from '../axios';
+import React, { useEffect, useState } from 'react'
 
 const EpisodeBlock = () => {
+  
   return (
     <div className="block-item">
       <div className="block-item__image">
