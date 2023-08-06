@@ -11,19 +11,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchEpisodes } from '../../redux/slices/episode';
 
 const Home = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [episodes, setEpisodes] = useState([]);
   const dispatch = useDispatch();
 
   const currentSeasonFilter = useSelector((state) => state.filter.currentOption.name);
+  const { episodes, status } = useSelector((state) => state.episode)
 
   useEffect(() => {
     if (currentSeasonFilter) {
-      dispatch(fetchEpisodes({ currentSeasonFilter }));
+      const allEpisodes = () => {
+        dispatch(fetchEpisodes({ currentSeasonFilter }));
+      }
+      allEpisodes();
     }
   }, [currentSeasonFilter])
-  
 
+  const skeleton = [...new Array(12)].map((_, i) => <Skeleton key={i}/>)
+
+  const totalEpisodes = episodes.results
+  ? episodes.results.map((obj) => <EpisodeBlock key={obj.id} {...obj} />)
+  : null;
+  
   return (
     <>
       <Header />
@@ -34,14 +41,7 @@ const Home = () => {
           <Search />
         </div>
         <div className='row'>
-          <EpisodeBlock />
-          <EpisodeBlock />
-          <EpisodeBlock />
-          <EpisodeBlock />
-          <EpisodeBlock />
-          <EpisodeBlock />
-          <EpisodeBlock />
-          <EpisodeBlock />
+          {status === 'loading' ? skeleton : totalEpisodes}
         </div>
       </div>
       <Footer />
